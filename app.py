@@ -8,6 +8,9 @@ import json
 # 구글 API 인증 (Streamlit secrets 사용)
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
+# # local test
+# creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+# client = gspread.authorize(creds)
 # secrets.toml의 JSON 객체 불러오기
 creds_dict = st.secrets["gcp_service_account"]
 creds_json = json.loads(json.dumps(creds_dict))
