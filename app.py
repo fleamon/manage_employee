@@ -13,7 +13,7 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 # client = gspread.authorize(creds)
 
 # gspread에 인증 정보 전달
-creds_dict = dict(st.secrets["gcp_service_account"])  # dict로 변환
+creds_dict = st.secrets["gcp_service_account"]  # 이미 dict 형태일 수 있음
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 
 client = gspread.authorize(credentials)
