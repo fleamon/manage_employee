@@ -11,12 +11,11 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 # # local test
 # creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
 # client = gspread.authorize(creds)
-# secrets.toml의 JSON 객체 불러오기
-creds_dict = st.secrets["gcp_service_account"]
-creds_json = json.loads(json.dumps(creds_dict))
 
 # gspread에 인증 정보 전달
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
+creds_dict = dict(st.secrets["gcp_service_account"])  # dict로 변환
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+
 client = gspread.authorize(credentials)
 
 # 시트 불러오기
